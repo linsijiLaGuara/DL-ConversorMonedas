@@ -1,4 +1,4 @@
-const getPokemon = async () => {
+const getCalcularMoneda = async () => {
     const ApiRouter = "https://mindicador.cl/api";
     const response = await fetch(ApiRouter);
     const DataConversorMoneda = await response.json();
@@ -6,5 +6,6 @@ const getPokemon = async () => {
   
     console.log(DataConversorMoneda);
   };
-  getPokemon();
+  getCalcularMoneda();
   
+

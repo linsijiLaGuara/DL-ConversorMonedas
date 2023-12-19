@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+:root {
+    --color: #16045f;
+    font-family: 'Ubuntu', sans-serif;
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(230, 218, 218);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    color: black;
+    text-transform: uppercase;
+    font-size: 1.9em;
+}
+
+p {
+    text-align: center;
+    font-size: 1.3em;
+
+}
+
+.boton {
+
+    color: white;
+    background-color: var(--color);
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 0.9em;
+    padding: 4px 10px;
+    border-width: 0.15em;
+    border-style: solid;
+    border-color: black;
+}
+
+.cantidades {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedorCoversor {
+    background-color: burlywood;
+    padding-right: 3%;
+    border-radius: 10%;
+
+}
+
+.cantidades select {
+    padding: 10px 10px 10px 10px;
+    appearance: none;
+    font-size: 16px;
+    background-position: right 10px top 50%, 0, 0;
+    background-size: 12px auto, 100%;
+    background-repeat: no-repeat;
+    border-width: 0.1em;
+    border-style: solid;
+    border-color: black;
+    margin: 1em;
+    border-radius: 10%;
+
+}
+
+.contenedorcabecera {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.cantidades input {
+    font-size: 30px;
+    text-align: right;
+    border-width: 0.05em;
+    border-bottom-style: groove;
+    border-color: black;
+    border-radius: 10px;
+}
+
+.contenedor_calculo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rate {
+    color: var(--color);
+    font-size: 1.2em;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.contenedor_invertir {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+select:focus,
+input:focus,
+button:focus {
+    outline: 0;
+}
+
+@media (max-width: 600px) {
+    .cantidades input {
+        width: 200px;
+    }
+}

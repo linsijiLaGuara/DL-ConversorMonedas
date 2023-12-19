@@ -3,10 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Conversor de Monedas</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Conversor de Monedas Nacional </title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <menu class="contenedorCoversor">
+      <div class="contenedorcabecera">
+        <h1>Conversor de divisas</h1>
+        <p>Conversor de Monedas Nacional</p>
+      </div>
+      <div class="contenedor">
+        <div class="cantidades">
+          <select id="selector_uno">
+            <option value="CLP">CLP</option>
+          </select>
+          <input type="number" id="Moneda-Unica" placeholder="0" value="1" />
+        </div>
+
+        <div class="contenedor_invertir">
+          <button class="boton" id="botoncalcular">Calcular</button>
+          <div class="rate" id="rate"></div>
+        </div>
+      </div>
+      <div class="cantidades">
+        <select id="selector_dos">
+          <option value="EUR" selected>EUR</option>
+          <option value="USD">USD</option>
+        </select>
+        <input type="number" id="cantidad_dos" placeholder="0" />
+      </div>
+    </menu>
+
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
