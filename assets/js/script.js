@@ -14,14 +14,11 @@ const obtenerTasaDeCambio = async () => {
 
 const calcular = async () => {
   const monedaOrigen = selectMonedaOrigen.value;
-
   const cantidadUno = parseFloat(inputCantidadUno.value);
   const tasaDeCambio = await obtenerTasaDeCambio(monedaOrigen);
   const resultado = cantidadUno * tasaDeCambio;
 
-  inputResultadoDivisa.value = resultado.toFixed(2);
-
-  console.log(inputResultadoDivisa.value);
+  inputResultadoDivisa.innerHTML = resultado.toFixed(2);
 };
 
 btnCalcular.addEventListener("click", calcular);
