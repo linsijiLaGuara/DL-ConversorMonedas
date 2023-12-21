@@ -1,3 +1,5 @@
+let myChart = null;
+
 const selectMonedaOrigen = document.getElementById("moneda_origen");
 
 const btnCalcular = document.getElementById("botonCalcular");
@@ -47,13 +49,59 @@ async function getMonedaId(url, IdTipoMoneda) {
     throw new Error(error);
   }
 }
+
+async function getAndCreateDataToChart(url, IdTipoMoneda) {
+  const coin = await fetch(`${url}${IdTipoMoneda}`);
+  const { serie } = await coin.json();
+
+  // ZOna hoeizontal de la grafica
+  const labels = serie.map(({ fecha }) => {
+    return fecha;
+  });
+  // console.log(labels);
+  // Zona vertical
+  const data = serie.map(({ valor }) => {
+    return valor;
+  });
+
+  const datasets = [
+    {
+      label: "Precio ultimos dias",
+      borderColor: "rgb(255, 99, 132)",
+      data,
+    },
+  ];
+
+  return { labels, datasets };
+}
+
+async function renderGrafica() {
+  const option_selected = document.getElementById("moneda_origen").value;
+
+  const data = await getAndCreateDataToChart(api_url, option_selected);
+  console.log(data);
+  const config = {
+    type: "line",
+    data,
+  };
+
+  const canvas = document.getElementById("myChart");
+  canvas.style.backgroundColor = "white";
+
+  if (myChart) {
+    myChart.destroy();
+  }
+
+  myChart = new Chart(canvas, config);
+}
+
 async function calcular() {
   const monedaOrigen = selectMonedaOrigen.value;
   const cantidadUno = parseFloat(inputCantidadUno.value);
   const calcularMoneda = await getMonedaId(api_url, monedaOrigen);
   const resultado = cantidadUno / parseFloat(calcularMoneda);
-
   inputResultadoDivisa.innerHTML = resultado.toFixed(2);
+  renderGrafica();
 }
 btnCalcular.addEventListener("click", calcular);
 rederizaInfoMoneda(api_url);
