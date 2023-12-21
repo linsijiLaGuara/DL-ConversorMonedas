@@ -15,12 +15,15 @@
 
       <div class="contenedor">
         <div class="cantidades">
-          <select id="moneda_origen">
-            <option value="bitcoin">Bitcoin</option>
-            <option value="euro">Euro</option>
-            <option value="dolar">Dolar</option>
-          </select>
-          <input type="number" id="cantidad_uno" placeholder="0" value="1" />
+          <select name="" id="moneda_origen">
+            <option value="" disabled selected>--Seleciona una Moneda--</option>
+        </select>
+          <input
+            type="number"
+            id="cantidad_uno"
+            placeholder="Ingrese el monto en CLP "
+            value=""
+          />
         </div>
 
         <div class="contenedor_invertir">
@@ -29,10 +32,18 @@
         </div>
       </div>
       <div class="resultado">
-        <p >Resultado:  <span id="resultado"> </span></p>
+        <p>Resultado: <span id="resultado"> </span></p>
+      </div>
+      <div>
+        <canvas id="grafico" class="chart"></canvas>
       </div>
     </menu>
 
     <script src="./assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vis@4.21.0-EOL/dist/vis.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/vis@4.21.0-EOL/dist/vis.min.css"
+      rel="stylesheet"
+    />
   </body>
 </html>
