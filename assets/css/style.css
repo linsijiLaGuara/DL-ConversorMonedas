@@ -122,6 +122,7 @@ button:focus {
 
 canvas {
 
-    width: 750px;
+    width: 770px;
     height: 350px;
+    border-radius: 2%;
 }
