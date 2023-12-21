@@ -50,7 +50,7 @@ async function getMonedaId(url, IdTipoMoneda) {
   }
 }
 
-function formatarFecha(fechaString) {
+function formatearFecha(fechaString) {
   const fecha = new Date(fechaString);
 
   const options = {
@@ -70,7 +70,7 @@ async function getAndCreateDataToChart(url, IdTipoMoneda) {
   const last10Entries = serie.slice(-10);
 
   // Zona horizontal de la gráfica (fechas)
-  const labels = last10Entries.map(({ fecha }) => formatarFecha(fecha));
+  const labels = last10Entries.map(({ fecha }) => formatearFecha(fecha));
 
   // Zona vertical de la gráfica (valores)
   const data = last10Entries.map(({ valor }) => valor);
