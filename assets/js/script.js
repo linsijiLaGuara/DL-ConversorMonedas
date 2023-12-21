@@ -50,23 +50,34 @@ async function getMonedaId(url, IdTipoMoneda) {
   }
 }
 
+function formatarFecha(fechaString) {
+  const fecha = new Date(fechaString);
+
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
+
+  return fecha.toLocaleString("es-ES", options);
+}
+
 async function getAndCreateDataToChart(url, IdTipoMoneda) {
   const coin = await fetch(`${url}${IdTipoMoneda}`);
   const { serie } = await coin.json();
 
-  // ZOna hoeizontal de la grafica
-  const labels = serie.map(({ fecha }) => {
-    return fecha;
-  });
-  // console.log(labels);
-  // Zona vertical
-  const data = serie.map(({ valor }) => {
-    return valor;
-  });
+  // Obtener los últimos 10 elementos de la serie
+  const last10Entries = serie.slice(-10);
+
+  // Zona horizontal de la gráfica (fechas)
+  const labels = last10Entries.map(({ fecha }) => formatarFecha(fecha));
+
+  // Zona vertical de la gráfica (valores)
+  const data = last10Entries.map(({ valor }) => valor);
 
   const datasets = [
     {
-      label: "Precio ultimos dias",
+      label: "Precio últimos 10 días",
       borderColor: "rgb(255, 99, 132)",
       data,
     },
@@ -79,7 +90,7 @@ async function renderGrafica() {
   const option_selected = document.getElementById("moneda_origen").value;
 
   const data = await getAndCreateDataToChart(api_url, option_selected);
-  console.log(data);
+
   const config = {
     type: "line",
     data,
